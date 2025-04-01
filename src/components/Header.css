@@ -1,0 +1,69 @@
+/* Default header styling */
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20px;
+  background: linear-gradient(270deg, #1CBBF6 0%, #1C90F6 100%);
+  transition: background 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Green background when punched in */
+.header-green {
+  background: linear-gradient(270deg, #28a745 0%, #218838 100%);
+}
+
+/* Date styling */
+.date {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff; /* White text for better contrast */
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+.punch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  border: none;
+  background: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.punch-content {
+  background-image: url("/assets/bg.png"); /* Replace with your image path */
+  background-size: contain;
+  opacity: calc(var(--opacity) * 0.5);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 10px;
+  padding: 0px;
+}
+.header-green {
+  background: linear-gradient(270deg, #28a745 0%, #218838 100%);
+}
+/* Timer styling */
+.timer {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffeb3b; /* Yellow color for the timer */
+  margin-top: 10px;
+}
+
+/* Time info styling */
+.time-info {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.time-info p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #fff; /* White text for better readability */
+}
