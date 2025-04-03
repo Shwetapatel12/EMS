@@ -3,7 +3,13 @@
   display: flex;
   flex-direction: column;
   align-items: left;
-  padding: 20px;
+  height: 100px;
+  width: 96%;
+  padding: 30px;
+
+  padding-right: 24px;
+  margin-top: 62px;
+  position: relative;
   background: linear-gradient(270deg, #1CBBF6 0%, #1C90F6 100%);
   transition: background 0.3s ease; /* Smooth transition for background color */
 }
@@ -20,8 +26,31 @@
   color: #fff; /* White text for better contrast */
   margin-bottom: 10px;
 }
+.punch-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%; /* Ensure it takes the full height of the container */
+}
 
 /* Button styling */
+
+.punch-btn.punch-in {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007bff;
+  border: none;
+  background: none;
+  padding-bottom: 50px;
+  border-radius: 50%;
+  width: 60px; /* Adjust size */
+  height: 60px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  animation: pulse 1.5s infinite ease-in-out;
+}
 .punch-btn {
   display: flex;
   align-items: center;
@@ -30,21 +59,12 @@
   border: none;
   background: none;
   border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 0px 0px;
+  font-size: 1px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.punch-content {
-  background-image: url("/assets/bg.png"); /* Replace with your image path */
-  background-size: contain;
-  opacity: calc(var(--opacity) * 0.5);
-  background-repeat: no-repeat;
-  background-position: center;
-  border-radius: 10px;
-  padding: 0px;
-}
 .header-green {
   background: linear-gradient(270deg, #28a745 0%, #218838 100%);
 }
@@ -59,11 +79,46 @@
 /* Time info styling */
 .time-info {
   text-align: left;
-  margin-bottom: 15px;
+  margin-top: 10px;
+  padding: 10px;
+  margin-bottom: 0px;
 }
 
 .time-info p {
   margin: 5px 0;
   font-size: 14px;
   color: #fff; /* White text for better readability */
+}
+
+.punch-text {
+  color: #fff;
+  font-size: 18px;
+}
+
+.punchout-button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #fde8e8; /* Light red background */
+  color: #d32f2f; /* Dark red text */
+  border: none;
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: 12px; 
+  right: 23px;
+}
+
+.punchout-button:hover {
+  background-color: #fbcaca; /* Slightly darker red */
+}
+
+.punchout-icon {
+  width: 14px;
+  height: 14px;
+  background-color: #d32f2f; /* Dark red */
+  border-radius: 2px;
 }

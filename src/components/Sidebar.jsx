@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import { Calendar, Clock, LayoutDashboard } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import { Clock, LayoutDashboard } from "lucide-react";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -7,16 +7,22 @@ const Sidebar = () => {
     <div className="Sidebar">
       <ul>
         <li>
-          <Link to="/dashboard">
+          <NavLink
+            to="/dashboard"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
             <LayoutDashboard />
             Dashboard
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="/timesheet">
+          <NavLink
+            to="/timesheet"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
             <Clock />
             Timesheet
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </div>

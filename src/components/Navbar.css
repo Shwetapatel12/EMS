@@ -4,12 +4,20 @@
     align-items: center;
     padding: 10px 20px;
     background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    position: fixed;
+    width: 98%;
+    top:0;
+    left: 0;
+    right: 5px;
+    z-index: 1000;
   }
   
   .navbar-left {
     display: flex;
     align-items: center;
+    gap: 12px;
   }
   
   .navbar-logo {

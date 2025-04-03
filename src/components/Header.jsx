@@ -3,7 +3,6 @@ import "./Header.css";
 
 const Header = ({ onNewEntry }) => {
   const punchInIcon = "/assets/Group 348.png";
-  const logoutIcon = "/assets/Group 345.png";
 
   const [isPunchedIn, setIsPunchedIn] = useState(false);
   const [punchInTime, setPunchInTime] = useState(null);
@@ -30,26 +29,27 @@ const Header = ({ onNewEntry }) => {
     return `${hrs}:${mins}:${secs}`;
   };
 
-  const handlePunch = () => {
-    if (!isPunchedIn) {
-      setPunchInTime(Date.now());
-    } else {
-      const logoutTime = Date.now();
-      const totalSeconds = Math.floor((logoutTime - punchInTime) / 1000);
-      
-      onNewEntry({
-        date: new Date(punchInTime).toLocaleDateString(),
-        loginTime: new Date(punchInTime).toLocaleTimeString(),
-        loginLocation: "Shivraj Nagar, Pune",
-        logoutTime: new Date(logoutTime).toLocaleTimeString(),
-        logoutLocation: "Shivraj Nagar, Pune",
-        totalHours: formatTime(totalSeconds),
-        tasks: "Edit Tasks",
-      });
+  const handlePunchIn = () => {
+    setPunchInTime(Date.now());
+    setIsPunchedIn(true);
+  };
 
-      setPunchInTime(null);
-    }
-    setIsPunchedIn(!isPunchedIn);
+  const handlePunchOut = () => {
+    const logoutTime = Date.now();
+    const totalSeconds = Math.floor((logoutTime - punchInTime) / 1000);
+
+    onNewEntry({
+      date: new Date(punchInTime).toLocaleDateString(),
+      loginTime: new Date(punchInTime).toLocaleTimeString(),
+      loginLocation: "Shivraj Nagar, Pune",
+      logoutTime: new Date(logoutTime).toLocaleTimeString(),
+      logoutLocation: "Shivraj Nagar, Pune",
+      totalHours: formatTime(totalSeconds),
+      tasks: "Edit Tasks",
+    });
+
+    setPunchInTime(null);
+    setIsPunchedIn(false);
   };
 
   return (
@@ -63,13 +63,18 @@ const Header = ({ onNewEntry }) => {
         </div>
       )}
 
-      <button className="punch-btn" onClick={handlePunch}>
-        <img 
-          src={isPunchedIn ? logoutIcon : punchInIcon} 
-          alt={isPunchedIn ? "Punch Out" : "Punch In"} 
-          className="punch-icon" 
-        />
-      </button>
+      <div className="punch-container">
+        {!isPunchedIn ? (
+          <button className="punch-btn punch-in" onClick={handlePunchIn}>
+            <img src={punchInIcon} alt="Punch In" className="punch-icon" />
+            <p className="punch-text">Punch In</p>
+          </button>
+        ) : (
+          <button class="punchout-button" onClick={handlePunchOut}>
+          <span class="punchout-icon"></span> Punchout
+        </button>
+        )}
+      </div>
     </div>
   );
 };
