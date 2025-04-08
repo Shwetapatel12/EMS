@@ -7,6 +7,7 @@ const Header = ({ onNewEntry }) => {
   const [isPunchedIn, setIsPunchedIn] = useState(false);
   const [punchInTime, setPunchInTime] = useState(null);
   const [elapsedTime, setElapsedTime] = useState("00:00:00");
+  const [showPrompt, setShowPrompt] = useState(false); // State for punchout confirmation
 
   useEffect(() => {
     let timer;
@@ -35,12 +36,15 @@ const Header = ({ onNewEntry }) => {
   };
 
   const handlePunchOut = () => {
+    setShowPrompt(true); // Show confirmation modal
+  };
+
+  const confirmPunchOut = () => {
     const logoutTime = Date.now();
     const totalSeconds = Math.floor((logoutTime - punchInTime) / 1000);
 
     onNewEntry({
-      date: new Date(punchInTime).toLocaleDateString(),
-      loginTime: new Date(punchInTime).toLocaleTimeString(),
+      date: new Date(punchInTime).toISOString().split("T")[0],      loginTime: new Date(punchInTime).toLocaleTimeString(),
       loginLocation: "Shivraj Nagar, Pune",
       logoutTime: new Date(logoutTime).toLocaleTimeString(),
       logoutLocation: "Shivraj Nagar, Pune",
@@ -50,6 +54,11 @@ const Header = ({ onNewEntry }) => {
 
     setPunchInTime(null);
     setIsPunchedIn(false);
+    setShowPrompt(false);
+  };
+
+  const cancelPunchOut = () => {
+    setShowPrompt(false); // Close prompt without punching out
   };
 
   return (
@@ -57,24 +66,50 @@ const Header = ({ onNewEntry }) => {
       <h2 className="date">Today, {new Date().toLocaleDateString()}</h2>
 
       {isPunchedIn && (
-        <div className="time-info">
-          <p>Punch In Time: {new Date(punchInTime).toLocaleTimeString()}</p>
+        <div >
           <p className="timer">{elapsedTime}</p>
+          <div className="time-info">
+          <p className="puch-in-time">Punch In Time: {new Date(punchInTime).toLocaleTimeString()}</p>
+          <p className="location">Shivrajnagar, pune</p>
+          <p className="task">Task</p>
+          </div>
         </div>
       )}
 
       <div className="punch-container">
         {!isPunchedIn ? (
-          <button className="punch-btn punch-in" onClick={handlePunchIn}>
-            <img src={punchInIcon} alt="Punch In" className="punch-icon" />
+          <div className="punch-in-container">
+            <button className="punch-btn punch-in" onClick={handlePunchIn}>
+              <img src={punchInIcon} alt="Punch In" className="punch-icon" />
+            </button>
             <p className="punch-text">Punch In</p>
-          </button>
+            <p className="greating">"Wish you a Great Day!"</p>
+          </div>
         ) : (
           <button class="punchout-button" onClick={handlePunchOut}>
-          <span class="punchout-icon"></span> Punchout
-        </button>
+            <span class="punchout-icon"></span> Punchout
+          </button>
         )}
       </div>
+
+      {/* Punchout Confirmation Prompt */}
+      {showPrompt && (
+        <div className="prompt-overlay">
+          <div className="prompt-box">
+            <img src="/assets/Group 239197.png" alt="Logo" className="logo" />{" "}
+            <h3 className="prompt-title">Confirm Punch-Out</h3>
+            <p>Are you sure you want to punch out?</p>
+            <div className="prompt-actions">
+              <button onClick={confirmPunchOut} className="confirm-button">
+                Punch Out
+              </button>
+              <button onClick={cancelPunchOut} className="cancel-button">
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

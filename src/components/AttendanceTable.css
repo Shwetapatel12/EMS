@@ -9,7 +9,12 @@
   margin: 20px auto;
   overflow: hidden;
 }
-
+.attendance-table th {
+  background-color: rgba(235, 250, 255, 1);
+  color: rgba(144, 144, 144, 1);
+  font-size: 14px;
+  
+}
 .attendance-table h3 {
   font-size: 18px;
   font-weight: bold;
@@ -65,4 +70,31 @@ tbody tr:hover {
 
 .edit-btn:hover {
   color: #0056b3;
+}
+
+.attendance-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.week-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.week-controls button {
+  background: #e0f0ff;
+  border: none;
+  padding: 0px 2px;
+  border-radius: 5px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.week-range {
+  font-size: 14px;
+  color: rgba(48, 48, 48, 1);
+  font-weight: bold;
 }

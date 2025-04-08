@@ -9,9 +9,3 @@
     flex: 1;
   }
   
-  .main-content {
-    flex: 1;
-    padding: 20px;
-    background-color: #f9f9f9; /* Light background for the main content */
-    overflow-y: auto; /* Scrollable if content overflows */
-  }

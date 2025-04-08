@@ -1,11 +1,11 @@
 /* Sidebar.css */
 
 .Sidebar {
-  width: 150px;
+  width: 156px;
   height: 100vh;
   padding-top: 20px;
   position: fixed;
-  top: 0;
+  top: 12px;
   left: 0;
   display: flex;
   flex-direction: column;

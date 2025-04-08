@@ -2,13 +2,13 @@
 .header {
   display: flex;
   flex-direction: column;
-  align-items: left;
-  height: 100px;
+  align-items: left-start;
+  height: 128px;
   width: 96%;
-  padding: 30px;
-
-  padding-right: 24px;
-  margin-top: 62px;
+  border-radius: 5px;
+  padding: 0px 2px 30px 30px;
+   padding-right: 24px;
+  margin-top: 82px;
   position: relative;
   background: linear-gradient(270deg, #1CBBF6 0%, #1C90F6 100%);
   transition: background 0.3s ease; /* Smooth transition for background color */
@@ -23,15 +23,15 @@
 .date {
   font-size: 18px;
   font-weight: bold;
+  margin-bottom: 0px;
   color: #fff; /* White text for better contrast */
-  margin-bottom: 10px;
 }
 .punch-container {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%; /* Ensure it takes the full height of the container */
+  height:18px; /* Ensure it takes the full height of the container */
 }
 
 /* Button styling */
@@ -43,56 +43,68 @@
   background-color: #007bff;
   border: none;
   background: none;
-  padding-bottom: 50px;
   border-radius: 50%;
-  width: 60px; /* Adjust size */
-  height: 60px;
+  width: 20px; /* Adjust size */
+  height: 20px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   animation: pulse 1.5s infinite ease-in-out;
 }
-.punch-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #007bff;
-  border: none;
-  background: none;
-  border-radius: 5px;
-  padding: 0px 0px;
-  font-size: 1px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+.punch-icon {
+  width: 50px;
+  height: 50px;
 }
 
 .header-green {
   background: linear-gradient(270deg, #28a745 0%, #218838 100%);
 }
-/* Timer styling */
-.timer {
+
+.puch-in-time {
   font-size: 16px;
-  font-weight: bold;
-  color: #ffeb3b; /* Yellow color for the timer */
-  margin-top: 10px;
+  color: #fff;
+  margin-left: 0px;
 }
-
-/* Time info styling */
 .time-info {
-  text-align: left;
-  margin-top: 10px;
-  padding: 10px;
-  margin-bottom: 0px;
+  display: flex;
+  flex-direction: row;
+  gap: 38px;
+  align-items: left;
+  justify-content: left;
+  margin-top: 44px;  
 }
 
-.time-info p {
-  margin: 5px 0;
-  font-size: 14px;
-  color: #fff; /* White text for better readability */
+.location {
+  font-size: 16px;
+  color: #fff;
 }
+
+.task {
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+}
+
+.timer {
+  font-size: 28px;
+  font-weight: bold;
+  color: #fff;
+  margin: 0px;
+}
+
 
 .punch-text {
   color: #fff;
-  font-size: 18px;
+  font-size: 16px;
+  margin-top: 12px;
+  margin-bottom: 0px;
+}
+
+.greating {
+  color: #fff; 
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 0px;
 }
 
 .punchout-button {
@@ -121,4 +133,66 @@
   height: 14px;
   background-color: #d32f2f; /* Dark red */
   border-radius: 2px;
+}
+
+/* Punchout Confirmation Modal */
+.prompt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.prompt-box {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.prompt-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-button {
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancel-button {
+  background-color: gray;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.confirm-button:hover {
+  background-color: #b71c1c;
+}
+
+.cancel-button:hover {
+  background-color: #555;
+}
+
+.punch-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 80px;
 }

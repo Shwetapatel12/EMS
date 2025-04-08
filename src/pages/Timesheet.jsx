@@ -1,11 +1,14 @@
+
 import { useState } from "react";
 import Navbar from "../components/Navbar"; // Ensure Navbar is imported
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import AttendanceTable from "../components/AttendanceTable";
 import "./Dashboard.css"; // Add a CSS file for layout adjustments
+import "./Timesheet.css"; // Add a CSS file for layout adjustments
 
-const Dashboard = () => {
+
+const TimeSheet = () => {
   const [attendanceList, setAttendanceList] = useState([]);
 
   const handleNewEntry = (newEntry) => {
@@ -20,10 +23,11 @@ const Dashboard = () => {
         <Sidebar />
         <div className="main-content">
           <Header onNewEntry={handleNewEntry} />
+          <AttendanceTable attendanceList={attendanceList} />
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default TimeSheet;
