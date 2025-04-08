@@ -1,5 +1,7 @@
 import "./AttendanceTable.css";
 import { useState } from "react";
+import { Icon } from "@iconify/react";
+
 import {
   startOfWeek,
   endOfWeek,
@@ -9,10 +11,13 @@ import {
   format,
 } from "date-fns";
 
-const AttendanceTable = ({ attendanceList }) => {
+const AttendanceTable = ({ attendanceList, setAttendanceList }) => {
   const [weekStart, setWeekStart] = useState(
     startOfWeek(new Date(), { weekStartsOn: 1 })
   );
+
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editedTask, setEditedTask] = useState("");
 
   const weekEnd = endOfWeek(weekStart, { weekStartsOn: 1 });
 
@@ -29,17 +34,43 @@ const AttendanceTable = ({ attendanceList }) => {
     setWeekStart(addWeeks(weekStart, 1));
   };
 
+  const handleEditTask = (index, currentTask) => {
+    setEditingIndex(index);
+    setEditedTask(currentTask);
+  };
+
+  const handleSaveTask = (index) => {
+    const updatedList = [...attendanceList];
+    const realIndex = attendanceList.findIndex(
+      (entry) => entry.date === filteredAttendance[index].date
+    );
+
+    updatedList[realIndex].tasks = editedTask;
+    setAttendanceList(updatedList);
+    setEditingIndex(null);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingIndex(null);
+    setEditedTask("");
+  };
+
   return (
     <div className="attendance-table">
       <div className="attendance-header">
         <h3>Weekly Attendance</h3>
         <div className="week-controls">
+          <Icon icon="uil:calender" width="24" height="24" />
           <span className="week-range">
             {format(weekStart, "dd MMM yyyy")} -{" "}
             {format(weekEnd, "dd MMM yyyy")}
           </span>
-          <button onClick={goToPreviousWeek}>←</button>
-          <button onClick={goToNextWeek}>→</button>
+          <button onClick={goToPreviousWeek}>
+            <Icon icon="iconamoon:arrow-left-2" width="18" height="18" color="none" />
+          </button>
+          <button onClick={goToNextWeek}>
+            <Icon icon="iconamoon:arrow-right-2" width="18" height="18" />
+          </button>
         </div>
       </div>
       <table>
@@ -71,8 +102,33 @@ const AttendanceTable = ({ attendanceList }) => {
                 <td>{entry.logoutLocation}</td>
                 <td>{entry.totalHours}</td>
                 <td className="tasks-cell">
-                  <span>{entry.tasks}</span>
-                  <button className="edit-btn">🖋️</button>
+                  {editingIndex === index ? (
+                    <>
+                      <input
+                        type="text"
+                        value={editedTask}
+                        onChange={(e) => setEditedTask(e.target.value)}
+                      />
+                      <button onClick={() => handleSaveTask(index)}>
+                        Save
+                      </button>
+                      <button onClick={handleCancelEdit}>Cancel</button>
+                    </>
+                  ) : (
+                    <>
+                      <span>{entry.tasks}</span>
+                      <button
+                        className="edit-btn"
+                        onClick={() => handleEditTask(index, entry.tasks)}
+                      >
+                        <Icon
+                          icon="material-symbols:edit-square-outline"
+                          width="18"
+                          height="18"
+                        />
+                      </button>
+                    </>
+                  )}
                 </td>
               </tr>
             ))

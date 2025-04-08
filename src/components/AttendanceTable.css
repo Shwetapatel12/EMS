@@ -98,3 +98,22 @@ tbody tr:hover {
   color: rgba(48, 48, 48, 1);
   font-weight: bold;
 }
+
+.tasks-cell input {
+  padding: 4px;
+  width: 120px;
+  margin-right: 6px;
+}
+
+.edit-btn,
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.week-controls {
+  background-color: rgba(246, 246, 246, 1);
+  color: rgba(48, 48, 48, 1);
+}
