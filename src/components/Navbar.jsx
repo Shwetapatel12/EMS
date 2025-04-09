@@ -39,18 +39,16 @@ const Navbar = () => {
         />
       </div>
       <div className="navbar-right">
-        <div className="profile-dropdown" ref={dropdownRef}>
+        <div className="profile-dropdown" ref={dropdownRef} onClick={toggleDropdown}>
           <img
             src="/assets/user-profile.png"
             alt="User Profile"
             className="navbar-user-img"
-            onClick={toggleDropdown}
           />
           <span className="navbar-user-name">Aaniket</span>
           <Icon
             icon="mdi:chevron-down"
             className="navbar-dropdown-icon"
-            onClick={toggleDropdown}
           />
 
           {dropdownOpen && (
