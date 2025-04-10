@@ -15,7 +15,6 @@ const AttendanceTable = ({ attendanceList, setAttendanceList }) => {
   const [weekStart, setWeekStart] = useState(
     startOfWeek(new Date(), { weekStartsOn: 1 })
   );
-
   const [editingIndex, setEditingIndex] = useState(null);
   const [editedTask, setEditedTask] = useState("");
 
@@ -34,21 +33,26 @@ const AttendanceTable = ({ attendanceList, setAttendanceList }) => {
     setWeekStart(addWeeks(weekStart, 1));
   };
 
-  const handleEditTask = (index, currentTask) => {
-    setEditingIndex(index);
-    setEditedTask(currentTask);
-  };
+ const handleEditTask = (filteredIndex, currentTask) => {
+  const realIndex = attendanceList.findIndex(
+    (entry) => entry.date === filteredAttendance[filteredIndex].date
+  );
+  setEditingIndex(realIndex);
+  setEditedTask(currentTask);
+};
 
-  const handleSaveTask = (index) => {
+
+  const handleSaveTask = () => {
     const updatedList = [...attendanceList];
-    const realIndex = attendanceList.findIndex(
-      (entry) => entry.date === filteredAttendance[index].date
-    );
-
-    updatedList[realIndex].tasks = editedTask;
+  if (editingIndex !== null && updatedList[editingIndex]) {
+    updatedList[editingIndex].tasks = editedTask;
     setAttendanceList(updatedList);
-    setEditingIndex(null);
-  };
+  }
+
+  // Force-close modal and reset
+  setEditingIndex(null);
+  setEditedTask("");
+};
 
   const handleCancelEdit = () => {
     setEditingIndex(null);
@@ -66,13 +70,14 @@ const AttendanceTable = ({ attendanceList, setAttendanceList }) => {
             {format(weekEnd, "dd MMM yyyy")}
           </span>
           <button onClick={goToPreviousWeek}>
-            <Icon icon="iconamoon:arrow-left-2" width="18" height="18" color="none" />
+            <Icon icon="iconamoon:arrow-left-2" width="18" height="18" />
           </button>
           <button onClick={goToNextWeek}>
             <Icon icon="iconamoon:arrow-right-2" width="18" height="18" />
           </button>
         </div>
       </div>
+
       <table>
         <thead>
           <tr>
@@ -102,39 +107,50 @@ const AttendanceTable = ({ attendanceList, setAttendanceList }) => {
                 <td>{entry.logoutLocation}</td>
                 <td>{entry.totalHours}</td>
                 <td className="tasks-cell">
-                  {editingIndex === index ? (
-                    <>
-                      <input
-                        type="text"
-                        value={editedTask}
-                        onChange={(e) => setEditedTask(e.target.value)}
-                      />
-                      <button onClick={() => handleSaveTask(index)}>
-                        Save
-                      </button>
-                      <button onClick={handleCancelEdit}>Cancel</button>
-                    </>
-                  ) : (
-                    <>
-                      <span>{entry.tasks}</span>
-                      <button
-                        className="edit-btn"
-                        onClick={() => handleEditTask(index, entry.tasks)}
-                      >
-                        <Icon
-                          icon="material-symbols:edit-square-outline"
-                          width="18"
-                          height="18"
-                        />
-                      </button>
-                    </>
-                  )}
+                  <span>{entry.tasks}</span>
+                  <button
+                    className="edit-btns"
+                    onClick={() => handleEditTask(index, entry.tasks)}
+                  >
+                    <Icon icon="mdi:edit" width="18" height="18" />
+                  </button>
                 </td>
               </tr>
             ))
           )}
         </tbody>
       </table>
+
+      {/* Popup Modal */}
+      {editingIndex !== null && (
+        <div className="modal-overlay">
+          <div className="modal-content">
+            <h4>Edit Task</h4>
+            <textarea
+              className="task-textarea"
+              value={editedTask}
+              onChange={(e) => setEditedTask(e.target.value)}
+              rows="5"
+              style={{
+                width: "90%",
+                padding: "10px",
+                borderRadius: "8px",
+              }}
+            />
+            <div className="modal-actions">
+              <button className="cancel-btn" onClick={handleCancelEdit}>
+                Cancel
+              </button>
+              <button
+                className="save-btn"
+                onClick={handleSaveTask}
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

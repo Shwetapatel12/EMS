@@ -9,12 +9,14 @@
   margin: 20px auto;
   overflow: hidden;
 }
+
 .attendance-table th {
   background-color: rgba(235, 250, 255, 1);
   color: rgba(144, 144, 144, 1);
   font-size: 14px;
-  
+
 }
+
 .attendance-table h3 {
   font-size: 18px;
   font-weight: bold;
@@ -105,15 +107,81 @@ tbody tr:hover {
   margin-right: 6px;
 }
 
-.edit-btn,
+.edit-btns,
 button {
   background: none;
   border: none;
   cursor: pointer;
   font-size: 16px;
+  color: #007bff;
 }
 
 .week-controls {
   background-color: rgba(246, 246, 246, 1);
   color: rgba(48, 48, 48, 1);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  /* translucent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  width: 582px;
+  height: 270px;
+  top: 273px;
+  left: 399px;
+  border-radius: 10px;
+  border-width: 1px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content h4 {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  margin-left: 18px;
+  font-size: 18px;
+}
+.modal-content textarea {
+  height: 100px;
+  width: 90%;
+  margin: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.modal-actions .cancel-btn {
+  background-color: #e0e0e0;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modal-actions .save-btn {
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 8px;
+  cursor: pointer;
 }

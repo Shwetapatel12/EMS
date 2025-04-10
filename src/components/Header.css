@@ -4,14 +4,21 @@
   flex-direction: column;
   align-items: left-start;
   height: 128px;
-  width: 96%;
-  border-radius: 5px;
+  width: 98%;
+  border-radius: 10px;
   padding: 0px 2px 30px 30px;
    padding-right: 24px;
-  margin-top: 82px;
   position: relative;
   background: linear-gradient(270deg, #1CBBF6 0%, #1C90F6 100%);
   transition: background 0.3s ease; /* Smooth transition for background color */
+}
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding-top: 18px;
 }
 
 /* Green background when punched in */

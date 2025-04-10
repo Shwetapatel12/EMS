@@ -64,6 +64,7 @@ const Header = ({ onNewEntry }) => {
   };
 
   return (
+    <div className="header-container">
     <div className={`header ${isPunchedIn ? "header-green" : " "}`}>
       <h2 className="date">Today, {new Date().toLocaleDateString()}</h2>
 
@@ -136,6 +137,7 @@ const Header = ({ onNewEntry }) => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };
