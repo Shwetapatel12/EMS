@@ -48,7 +48,7 @@
   height: 20px;
 }
 
-.main-content {
+.background-main-content {
   margin-left: 150px; /* Same width as Sidebar */
   transition: margin-left 0.3s ease-in-out;
   padding: 20px;
