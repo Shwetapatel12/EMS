@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./Header.css";
+import { Icon } from "@iconify/react";
 
 const Header = ({ onNewEntry }) => {
   const punchInIcon = "/assets/Group 348.png";
@@ -44,7 +45,8 @@ const Header = ({ onNewEntry }) => {
     const totalSeconds = Math.floor((logoutTime - punchInTime) / 1000);
 
     onNewEntry({
-      date: new Date(punchInTime).toISOString().split("T")[0],      loginTime: new Date(punchInTime).toLocaleTimeString(),
+      date: new Date(punchInTime).toISOString().split("T")[0],
+      loginTime: new Date(punchInTime).toLocaleTimeString(),
       loginLocation: "Shivraj Nagar, Pune",
       logoutTime: new Date(logoutTime).toLocaleTimeString(),
       logoutLocation: "Shivraj Nagar, Pune",
@@ -58,20 +60,45 @@ const Header = ({ onNewEntry }) => {
   };
 
   const cancelPunchOut = () => {
-    setShowPrompt(false); // Close prompt without punching out
+    setShowPrompt(false); 
   };
 
   return (
-    <div className={`header ${isPunchedIn ? "header-green" : ""}`}>
+    <div className="header-container">
+    <div className={`header ${isPunchedIn ? "header-green" : " "}`}>
       <h2 className="date">Today, {new Date().toLocaleDateString()}</h2>
 
       {isPunchedIn && (
-        <div >
+        <div>
           <p className="timer">{elapsedTime}</p>
           <div className="time-info">
-          <p className="puch-in-time">Punch In Time: {new Date(punchInTime).toLocaleTimeString()}</p>
-          <p className="location">Shivrajnagar, pune</p>
-          <p className="task">Task</p>
+            <p className="puch-in-time">
+              {" "}
+              <Icon icon="formkit:time" width="18" height="18" color="white" />
+              Punch In Time: {new Date(punchInTime).toLocaleTimeString()}
+            </p>
+
+            <p className="location">
+              {" "}
+              <Icon
+                icon="fluent:location-28-regular"
+                width="18"
+                height="18"
+                color="white"
+              />
+              Shivrajnagar, pune
+            </p>
+
+            <p className="task">
+              {" "}
+              <Icon
+                icon="material-symbols-light:add"
+                width="18"
+                height="18"
+                color="white"
+              />
+              Task
+            </p>
           </div>
         </div>
       )}
@@ -110,6 +137,7 @@ const Header = ({ onNewEntry }) => {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 };

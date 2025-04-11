@@ -1,7 +1,15 @@
-
- .main-content {
-    flex: 1;
-    padding: 20px 24px;
-    background-color: white;
-    border-radius: 8px;
-  }
+.main-content {
+  flex: 1;
+  background-color: white;
+  border-radius: 8px;
+  width: 1028;
+  height: 694;
+  left: 228px;
+  top: 1px;
+  padding: 0px 20px;
+  margin-top: 80px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-left: 190px;
+  /* Same width as Sidebar */
+}
