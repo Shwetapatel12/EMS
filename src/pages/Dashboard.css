@@ -1,4 +1,4 @@
-/* .dashboard-container {
+.dashboard-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -8,8 +8,8 @@
     display: flex;
     flex: 1;
   }
-
-   /* Container Layout */
+  
+  /* Container Layout */
 .dashboard-container {
   display: flex;
   flex-direction: column;
@@ -287,4 +287,5 @@
   margin-bottom: 10px;
   color: #333;
 }
+
 
