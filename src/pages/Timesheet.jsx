@@ -5,7 +5,6 @@ import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import AttendanceTable from "../components/AttendanceTable";
 import "./Dashboard.css"; // Add a CSS file for layout adjustments
-import "./Timesheet.css"; // Add a CSS file for layout adjustments
 
 
 const TimeSheet = () => {
@@ -29,5 +28,6 @@ const TimeSheet = () => {
     </div>
   );
 };
+
 
 export default TimeSheet;
