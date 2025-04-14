@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar"; // Ensure Navbar is imported
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import AttendanceTable from "../components/AttendanceTable";
+import DashBoardDetails from "../components/DashBoardDetails";
 import "./Dashboard.css"; // Add a CSS file for layout adjustments
 
 const Dashboard = () => {
@@ -10,20 +10,23 @@ const Dashboard = () => {
 
   const handleNewEntry = (newEntry) => {
     // Add new entry at the beginning of the list
+    // Add new entry at the beginning of the list
     setAttendanceList([newEntry, ...attendanceList]);
   };
 
   return (
     <div className="dashboard-container">
       <Navbar />
+      
       <div className="dashboard-content">
         <Sidebar />
-        <div className="main-content">
+        <div className="backgound-main-content">
           <Header onNewEntry={handleNewEntry} />
+          <DashBoardDetails/>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;   
+export default Dashboard;

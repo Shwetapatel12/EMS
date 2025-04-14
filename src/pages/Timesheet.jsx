@@ -20,7 +20,7 @@ const TimeSheet = () => {
       <Navbar />
       <div className="dashboard-content">
         <Sidebar />
-        <div className="main-content">
+        <div className="background-main-content">
           <Header onNewEntry={handleNewEntry} />
           <AttendanceTable attendanceList={attendanceList} />
         </div>
