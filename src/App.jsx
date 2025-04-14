@@ -10,6 +10,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/admin-dashboard" element={<Dashboard />} />
+        <Route path="/admin-timesheet" element={<Dashboard />} />
+        <Route path="/emp-managment" element={<Dashboard />} />
         <Route path="/timesheet" element={<TimeSheet />} /> 
         <Route path="/profile" element={<Profile />} /> {/* Ensure Profile is imported */}
       </Routes>

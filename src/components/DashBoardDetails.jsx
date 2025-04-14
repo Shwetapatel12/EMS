@@ -3,6 +3,7 @@ import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, LabelList, ResponsiveCont
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import "./DashboardDetails.css";
 
+  
 const getDaysInMonth = (year, month) => {
   return new Date(year, month + 1, 0).getDate();
 };
@@ -42,19 +43,21 @@ const DashBoardDetails = () => {
   const startDay = new Date(year, currentMonth.getMonth(), 1).getDay();
 
   // Define weekdays to always show on X-axis
-  const weekDays = ['Mon', 'Tue', 'Wedn', 'Thu', 'Fri'];
+  const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri'];
 
-  const chartData = weekDays.map((day) => {
-    const entry = attendanceList.find(
-      (entry) =>
-        new Date(entry.date).toLocaleDateString("en-US", { weekday: "short" }) ===
-        day
-    );
-    return {
-      name: day,
-      hours: entry ? parseHours(entry.totalHours) : 0,
-    };
-  });
+
+ const chartData = weekDays.map((day) => {
+  const entry = attendanceList.find(
+    (entry) =>
+      new Date(entry.date).toLocaleDateString("en-US", { weekday: "short" }) ===
+      day
+  );
+  return {
+    name: day,
+    hours: entry ? parseHours(entry.totalHours) : 0,
+  };
+});
+
 
   return (
     
@@ -103,7 +106,7 @@ const DashBoardDetails = () => {
                 <BarChart data={chartData}>
                   <XAxis dataKey="name" axisLine={false} tickLine={false} />
                   <YAxis domain={[0, 10]} ticks={[2, 4, 6, 8, 10]} tick={{ fontSize: 12, fill: "#888" }} axisLine={false} tickLine={false} />
-                  {/* <Tooltip formatter={(value) => `${value} Hrs`} /> */}
+                  <Tooltip formatter={(value) => `${value} Hrs`} />
                   <Legend />
                   <Bar dataKey="hours" fill="#CBF1FF" radius={[6, 6, 0, 0]}>
                     <LabelList dataKey="hours" position="top" formatter={(val) => (val === 9.17 ? "9:10 Hrs" : '')} />

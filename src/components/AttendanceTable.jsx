@@ -60,7 +60,6 @@ const AttendanceTable = ({ attendanceList, setAttendanceList }) => {
   };
 
   return (
-    
     <div className="attendance-table">
       <div className="attendance-header">
         <h3>Weekly Attendance</h3>
