@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar"; // Ensure Navbar is imported
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import AttendanceTable from "../components/AttendanceTable";
-import "./Timesheet.css"; // Add a CSS file for layout adjustments
+import "./Dashboard.css"; // Add a CSS file for layout adjustments
 
 
 const TimeSheet = () => {
@@ -28,5 +28,6 @@ const TimeSheet = () => {
     </div>
   );
 };
+
 
 export default TimeSheet;

@@ -10,6 +10,7 @@ const Dashboard = () => {
 
   const handleNewEntry = (newEntry) => {
     // Add new entry at the beginning of the list
+    // Add new entry at the beginning of the list
     setAttendanceList([newEntry, ...attendanceList]);
   };
 
