@@ -1,0 +1,123 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  height: auto;        
+  overflow: visible;   
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  color: rgba(0, 0, 0, 1);
+  margin-top: 0px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.step-indicator {
+  margin-top: 2px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  font-size: 12px;
+}
+
+.step-circle {
+
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #ddd;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.step-circle.active {
+  background-color: rgba(0, 175, 239, 1);
+  color: white;
+}
+.modal-form {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping if content exceeds width */
+  gap: 1rem;
+}
+
+
+.form-group input {
+  border: 1px solid rgba(0, 175, 239, 1);
+  border-radius: 6px;
+  font-size: 1px;
+  outline: none;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.back-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.submit-btn:hover {
+  background-color: #43a047;
+}
+
+.back-btn,
+.submit-btn {
+  padding: 0.6rem 1.4rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+}
