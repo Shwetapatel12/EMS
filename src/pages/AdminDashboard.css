@@ -1,0 +1,268 @@
+
+    .admin-dashboard-container {
+     background-color: rgba(245, 252, 254, 1);
+    }
+  
+    .admin-stat-card {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 16px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        width: 376px;
+        height: 96px;
+        transition: transform 0.2s ease;
+      }
+      
+      .admin-stat-icon {
+        padding: 12px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .attendance-card {
+        background: #ffffff;
+        padding: 20px;
+        border-radius: 16px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        margin-top: 30px;
+        margin-bottom: 30px;
+      }
+      
+      .attendance-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      
+      .attendance-header h3 {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+      }
+      
+      .month-selector {
+        background: #f9f9f9;
+        padding: 8px 14px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        color: #333;
+        border: 1px solid #e0e0e0;
+      }
+      
+      .month-selector:hover {
+        background: #f0f0f0;
+      }
+
+      
+
+      .admin-new-employees-card {
+        margin-top: 20px;
+        background: #f5fcfe;
+        padding: 20px;
+        border-radius: 12px;
+        height: 429px;
+       
+      }
+      .admin-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 16px;
+      }
+      .admin-card-title {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .month-btn, .admin-add-employee-btn {
+        
+          background: transparent;
+          color: #00afef;
+          border: none;
+          font-size: 16px;
+          cursor: pointer;
+      }
+      
+      .admin-employee-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .admin-employee-item {
+        display: flex;
+        align-items: center;
+        background: #ffffff;
+        padding: 12px 16px;
+        border-radius: 8px;
+      }
+      
+      .admin-employee-item:last-child {
+        border-bottom: none;
+      }
+      
+      .admin-employee-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 12px;
+      }
+      
+      .admin-employee-info {
+        flex: 1;
+      }
+      
+      .admin-employee-name {
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+      }
+      
+      .admin-employee-email {
+        font-size: 14px;
+        color: #666;
+        margin: 0;
+      }
+      
+      .admin-admin-eye-icon {
+        font-size: 22px;
+        color: #00afef;
+        cursor: pointer;
+      }
+      .admin-content-sections {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; /* spacing between chart and new employee card */
+        margin-top: 30px;
+      }
+      
+      .admin-dashboard-chart-card{
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        margin-right: 1px;
+        flex: 1;
+      }
+      .admin-dashboard-row {
+        display: flex;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      
+    
+      
+      .admin-new-employees-card {
+        flex: 1;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        margin-left: 1px;
+      }
+      .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+      
+      .date-picker-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        text-decoration: #D0D0D0;
+      }
+
+      
+      .dropdown-btn {
+        background: white;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 6px 8px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+      }
+      
+      .dropdown-menu {
+        position: absolute;
+        top: 40px;
+        right: 0;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 160px;
+        z-index: 10;
+      }
+      
+      .dropdown-item {
+        padding: 10px 15px;
+        cursor: pointer;
+      }
+      
+      .dropdown-item:hover {
+        background-color: #f0f0f0;
+      }
+      
+      .dropdown-icon {
+        color: #D0D0D0;
+       
+      
+      }
+      .icon-with-bg-one {
+        background-color: #E7FFF2;
+        padding: 8px;
+        border-radius: 8px; 
+      }
+      .icon-with-bg-two {
+        background-color: #E8F9FF;
+        padding: 8px;
+        border-radius: 8px; 
+      }
+      .icon-with-bg-three{
+        background-color: #FFF5EC;
+        padding: 8px;
+        border-radius: 8px;
+      }
+      .date-picker-btn {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #fff;
+        font-size: 14px;
+      }
+      .admin-backgound-main-content {
+        flex: 1;
+        /* background-color: white; */
+        /* border-radius: 8px; */
+        width: 1028;
+        height: 694;
+        left: 228px;
+        top: 1px;
+        padding: 0px 20px;
+        margin-top: 80px;
+        border-radius: 10px;
+        /* box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); */
+        margin-left: 190px;
+        /* Same width as Sidebar */
+      }
+      

@@ -1,0 +1,177 @@
+
+
+.head-text{
+margin-top: 10px;
+margin-left: 150px;
+font-size: 29px;
+}
+.profile-card-container {
+    padding: 20px;
+    position: relative;
+    
+  }
+  
+  .back-button {
+    font-size: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 10px;
+  }
+  
+  .profile-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  } */
+  
+  /* .profile-card {
+    border-radius: 10px;
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+    align-items: center;
+    height: 179px;
+    border-radius: 15px;
+    margin-left: 50px;
+  } */
+  
+  /* .profile-left {
+
+    align-items: center;
+    text-align: center;
+    padding: 12px;
+ 
+    border-radius: 10px;
+    width: 220px;
+    margin: 0 auto;
+  } */
+  
+  
+  /* .profile-image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 6px;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  } */
+  
+  /* .profile-right {
+    flex: 1;
+    display: flex;
+    gap: 40px  160px;
+
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  .profile-right p {
+    margin: 0;
+    font-size: 14px;
+  }
+  /* .employee-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+  } */
+  /* .employee-role {
+    font-size: 13px;
+    color: #777;
+    margin: 0;
+  } */
+  .employee-role span {
+    color: #bbb;
+    margin: 0 4px;
+  }
+  /* .profile-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .profile-info-column p {
+    margin: 0;
+    font-size: 14px;
+    color: #444;
+  } */
+  .profile-info-column strong {
+    font-weight: 600;
+    color: #222;
+  }
+  .chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    display: flex;
+    
+  }
+  .head{
+        background-color: #d8f3ff;
+  }
+  .profile-view-container {
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .profile-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e0f7fa;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+  }
+  
+  .profile-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 250px;
+  }
+  
+  .profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+  }
+  
+  .employees-name {
+    margin: 5px 0;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .employees-role {
+    color: #555;
+  }
+  
+  .profile-right {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    gap: 50px;
+  }
+  
+  .profile-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .profile-info-column p {
+    font-size: 14px;
+  }
+  
