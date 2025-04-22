@@ -6,13 +6,10 @@ import "./index.css";
 import AdminTimeSheet from "./pages/AdminTimeSheet";
 import EmployeeManagement from "./pages/EmployeeManagement";
 import AdminDashboard from "./pages/AdminDashboard";
-<<<<<<< Updated upstream
 import EmployeeProfile from "./pages/EmployeeProfile";
-=======
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
->>>>>>> Stashed changes
 
 function App() {
   return (
