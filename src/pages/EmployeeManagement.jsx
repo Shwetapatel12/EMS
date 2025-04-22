@@ -5,7 +5,8 @@ import "./Dashboard.css";
 import "./AdminTimesheet.css";
 import "../components/AddEmployeeModal.css"; // Add a CSS file for layout adjustments
 import { Icon } from "@iconify/react";
-import AddEmployeeModal from "../components/AddEmployeeModel"; // Make sure the path is correct
+import AddEmployeeModal from "../components/AddEmployeeModel"; // Make sure the path is correct'
+import "./EmployeeManagement.css"; // Add a CSS file for layout adjustments
 
 const employees = [
   {
@@ -47,6 +48,14 @@ const employees = [
 
 const EmployeeManagement = () => {
   const [showModal, setShowModal] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const handleSearchChange = (e) =>
+    setSearchQuery(e.target.value.toLowerCase());
+
+  const filteredEmployees = employees.filter((employee) =>
+    employee.name.toLowerCase().includes(searchQuery)
+  );
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -66,15 +75,29 @@ const EmployeeManagement = () => {
             <div className="header-title">
               <h2>Employee Manager</h2>
               <button className="download-btn" onClick={handleOpenModal}>
-                <Icon icon="material-symbols:add-rounded" width="18" height="18" />
+                <Icon
+                  icon="material-symbols:add-rounded"
+                  width="18"
+                  height="18"
+                />
                 New Employee
               </button>
             </div>
 
             <div className="timesheet-controls">
               <div className="search-bar">
-                <input type="text" placeholder="Search employee name" />
-                <Icon icon="iconamoon:search" width="20" height="20" color="rgba(0, 175, 239, 1)" />
+                <input
+                  type="text"
+                  placeholder="Search employee name"
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+                <Icon
+                  icon="iconamoon:search"
+                  width="20"
+                  height="20"
+                  color="rgba(0, 175, 239, 1)"
+                />
               </div>
             </div>
 
@@ -91,7 +114,7 @@ const EmployeeManagement = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {employees.map((employee, index) => (
+                  {filteredEmployees.map((employee, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
                       <td className="employee-info">
@@ -102,13 +125,19 @@ const EmployeeManagement = () => {
                         )}
                         <span>{employee.name}</span>
                       </td>
-                      <td>{employee.name.toLowerCase().replace(" ", ".")}@raksoftech.com</td>
+                      <td>
+                        {employee.name.toLowerCase().replace(" ", ".")}
+                        @raksoftech.com
+                      </td>
                       <td>+91 12345 67890</td>
                       <td>{index % 2 === 0 ? "Engineering" : "Operations"}</td>
                       <td className="action-icons">
-                        <Icon icon="mdi:eye-outline" />
-                        <Icon icon="material-symbols:edit" />
-                        <Icon icon="material-symbols:delete-outline" color="red" />
+                        <Icon icon="hugeicons:view" className="eye" />
+                        <Icon icon="mdi:edit" className="pen" />
+                        <Icon
+                          icon="material-symbols:delete-outline"
+                          color="red"
+                        />
                       </td>
                     </tr>
                   ))}

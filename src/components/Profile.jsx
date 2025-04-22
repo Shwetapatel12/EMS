@@ -128,9 +128,10 @@ const Profile = () => {
           </div>
 
           <div className="profile-fields">
-            {renderField("First Name", "firstName")}
-            {renderField("Middle Name", "middleName")}
-            {renderField("Last Name", "lastName")}
+            {editMode && renderField("First Name", "firstName")}
+            {editMode && renderField("Middle Name", "middleName")}
+            {editMode && renderField("Last Name", "lastName")}
+
             {renderField("Date of Birth", "dob", "date")}
             {renderField("Date of Joining", "doj", "date")}
             {renderField("Department", "department")}

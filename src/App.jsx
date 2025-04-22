@@ -6,11 +6,18 @@ import "./index.css";
 import AdminTimeSheet from "./pages/AdminTimeSheet";
 import EmployeeManagement from "./pages/EmployeeManagement";
 import AdminDashboard from "./pages/AdminDashboard";
+<<<<<<< Updated upstream
 import EmployeeProfile from "./pages/EmployeeProfile";
+=======
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
+>>>>>>> Stashed changes
 
 function App() {
   return (
     <Router>
+      <>
       <Routes>
         <Route path="/" element={<Dashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
@@ -22,6 +29,8 @@ function App() {
         <Route path="/timesheet" element={<TimeSheet />} /> 
         <Route path="/profile" element={<Profile />} /> {/* Ensure Profile is imported */}
       </Routes>
+      <ToastContainer position="top-right" autoClose={3000} />
+      </>
     </Router>
   );
 }

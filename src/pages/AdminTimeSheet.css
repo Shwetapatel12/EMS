@@ -116,6 +116,12 @@
   height: 30px;
   border-radius: 50%;
 }
+.date-box.today {
+  background-color:  rgba(0, 175, 239, 1); /* Blue-ish background */
+  font-weight: bold;
+  color: white; 
+}
+
 
 .default-avatar {
   width: 30px;

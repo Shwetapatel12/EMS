@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar"; // Ensure Navbar is imported
 import Sidebar from "../components/Sidebar";
 import "./Dashboard.css"; // Add a CSS file for layout adjustments
 import "./AdminTimesheet.css";
 import { Icon } from "@iconify/react";
+import { format, addDays, subDays, startOfWeek, isSameDay } from "date-fns";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
+
 
 const employees = [
   {
@@ -44,9 +48,58 @@ const employees = [
 ];
 
 const AdminTimeSheet = () => {
-  const [viewMode, setViewMode] = React.useState("weekly");
-  const [selectedDate, setSelectedDate] = React.useState("26");
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [viewMode, setViewMode] = useState("weekly");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentWeekStartDate, setCurrentWeekStartDate] = useState(
+    startOfWeek(new Date(), { weekStartsOn: 1 })
+  );
+
+  const generateWeekDates = () => {
+    return Array.from({ length: 7 }, (_, i) =>
+      addDays(currentWeekStartDate, i)
+    );
+  };
+
+  const handlePrevWeek = () => {
+    setCurrentWeekStartDate((prev) => subDays(prev, 7));
+  };
+
+  const handleNextWeek = () => {
+    setCurrentWeekStartDate((prev) => addDays(prev, 7));
+  };
+
+  const weekDates = generateWeekDates();
+  const today = new Date();
+
+  const handleDownload = () => {
+    const dataToExport = employees
+      .filter((emp) =>
+        emp.name.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+      .map((emp) => ({
+        "Employee Name": emp.name,
+        "Login Time": emp.login,
+        "Login Location": "View Map", // Replace with actual location if available
+        "Logout Time": emp.logout,
+        "Logout Location": "View Map", // Replace with actual location if available
+        Tasks: emp.tasks,
+      }));
+  
+    const worksheet = XLSX.utils.json_to_sheet(dataToExport);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Timesheet");
+  
+    const excelBuffer = XLSX.write(workbook, {
+      bookType: "xlsx",
+      type: "array",
+    });
+    const file = new Blob([excelBuffer], {
+      type: "application/octet-stream",
+    });
+    saveAs(file, "Employee_Timesheet.xlsx");
+  };
+  
 
   return (
     <div className="dashboard-container">
@@ -58,7 +111,7 @@ const AdminTimeSheet = () => {
           <div className="timesheet-headesr">
             <div className="header-title">
               <h2>Employee’s Timesheet</h2>
-              <button className="download-btn">
+              <button className="download-btn" onClick={handleDownload}>
                 {" "}
                 <Icon
                   icon="material-symbols:download-rounded"
@@ -105,38 +158,41 @@ const AdminTimeSheet = () => {
                     height="20"
                     color="rgba(144, 144, 144, 1)"
                   />
-                  <span className="dates">Apr 24 - Apr 30 '25</span>
-                  <Icon
-                    icon="iconamoon:arrow-up-2"
-                    width="20"
-                    height="20"
-                    color="rgba(144, 144, 144, 1)"
-                    className="rotate-90"
-                  />
-                  <Icon
-                    icon="iconamoon:arrow-up-2"
-                    width="20"
-                    height="20"
-                    color="rgba(144, 144, 144, 1)"
-                    className="rotate-90-left"
-                  />
+                  <span className="dates">
+                    {format(weekDates[0], "MMM d")} -{" "}
+                    {format(weekDates[6], "MMM d ''yy")}
+                  </span>
+                  <button className="na-btn" onClick={handlePrevWeek}>
+                    <Icon
+                      icon="iconamoon:arrow-left-2"
+                      width="20"
+                      height="20"
+                      color="rgba(144, 144, 144, 1)"
+                    />
+                  </button>
+                  <button className="na-btn" onClick={handleNextWeek}>
+                    <Icon
+                      icon="iconamoon:arrow-right-2"
+                      width="20"
+                      height="20"
+                      color="rgba(144, 144, 144, 1)"
+                    />
+                  </button>
                 </div>
 
                 {viewMode === "weekly" ? (
                   <div className="date-boxes">
-                    {["24", "25", "26", "27", "28", "29", "30"].map(
-                      (day, idx) => (
-                        <div
-                          key={idx}
-                          className={`date-box ${
-                            selectedDate === day ? "selected" : ""
-                          }`}
-                          onClick={() => setSelectedDate(day)}
-                        >
-                          {day}
-                        </div>
-                      )
-                    )}
+                    {weekDates.map((day, idx) => (
+                      <div
+                        key={idx}
+                        className={`date-box ${
+                          isSameDay(day, selectedDate) ? "selected" : ""
+                        } ${isSameDay(day, today) ? "today" : ""}`}
+                        onClick={() => setSelectedDate(day)}
+                      >
+                        {format(day, "d")}
+                      </div>
+                    ))}
                   </div>
                 ) : (
                   <div className="daily-date-view">

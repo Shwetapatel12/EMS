@@ -6,6 +6,13 @@ import "./AddEmployeeModal.css";
 
 const AddEmployeeModal = ({ onClose }) => {
   const [step, setStep] = useState(1);
+  const steps = [
+    "Personal Information",
+    "Job Details",
+    "Leave Balance",
+    "Account Details",
+  ];
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -18,9 +25,10 @@ const AddEmployeeModal = ({ onClose }) => {
     role: "",
     managerId: "",
     hrId: "",
-    leaveBalance: "",
-    bankAccount: "",
-    ifscCode: "",
+    SickLeaveBalance: "",
+    CasualLeaveBalance: "",
+    OtherLeaveBalance: "",
+    companyEmail: "",
   });
 
   const handleChange = (e) => {
@@ -37,9 +45,20 @@ const AddEmployeeModal = ({ onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!formData.companyEmail) {
+      toast.error("Please enter company email");
+      return;
+    }
+
     console.log("Employee Data:", formData);
     toast.success("Employee added successfully!");
-    onClose();
+
+    // Delay closing modal to allow toast to show
+    setTimeout(() => {
+      console.log("Closing modal...");
+      onClose();
+    }, 500);
   };
 
   return (
@@ -48,23 +67,45 @@ const AddEmployeeModal = ({ onClose }) => {
         <div className="modal-header">
           <p>Add New Employee</p>
           <button onClick={onClose} className="close-btn">
-            <Icon icon="mdi:close" width="24" height="24" />
+            <Icon
+              icon="iconoir:cancel"
+              width="18"
+              height="18"
+              color="rgba(144, 144, 144, 1)"
+            />
           </button>
         </div>
 
         <div className="step-indicator">
-          {["Personal Information", "Job Details", "Leave Balance", "Account Details"].map(
-            (label, index) => (
-              <div
-                key={index}
-                className={`step-circle ${step === index + 1 ? "active" : ""}`}
-              >
-                {index + 1}
-              </div>
-            )
-          )}
-        </div>
+          {steps.map((label, index) => {
+            const isCompleted = step > index + 1;
+            const isActive = step === index + 1;
 
+            return (
+              <div
+              className={`step-item ${
+                isCompleted ? "completed" : isActive ? "active" : ""
+              }`}
+              key={index}
+            >
+              <div
+                className={`step-circle ${
+                  isCompleted ? "completed" : isActive ? "active" : ""
+                }`}
+              >
+                {isCompleted ? (
+                  <Icon icon="material-symbols:done" width="14" height="14" />
+                ) : (
+                  index + 1
+                )}
+              </div>
+              {index !== steps.length - 1 && <div className="step-line"></div>}
+              <div className="step-label">{label}</div>
+              <hr className="line"/>
+            </div>            
+            );
+          })}
+        </div>
         <form onSubmit={handleSubmit} className="modal-form">
           {step === 1 && (
             <>
@@ -177,53 +218,67 @@ const AddEmployeeModal = ({ onClose }) => {
           )}
 
           {step === 3 && (
-            <div className="form-group">
-              <label>Leave Balance</label>
-              <input
-                name="leaveBalance"
-                value={formData.leaveBalance}
-                onChange={handleChange}
-                placeholder="Enter Leave Balance"
-              />
-            </div>
+            <>
+              <div className="form-group">
+                <label>Sick Leave Balance</label>
+                <input
+                  name="SickLeaveBalance"
+                  value={formData.SickLeaveBalance}
+                  onChange={handleChange}
+                  placeholder="Enter Sick Leave Balance"
+                />
+              </div>
+              <div className="form-group">
+                <label>Casual Leave Balance</label>
+                <input
+                  name="CasualLeaveBalance"
+                  value={formData.CasualLeaveBalance}
+                  onChange={handleChange}
+                  placeholder="Enter Casual Leave Balance"
+                />
+              </div>
+              <div className="form-group">
+                <label>Other Leave Balance</label>
+                <input
+                  name="OtherLeaveBalance"
+                  value={formData.OtherLeaveBalance}
+                  onChange={handleChange}
+                  placeholder="Enter Other Leave Balance"
+                />
+              </div>
+            </>
           )}
 
           {step === 4 && (
             <>
               <div className="form-group">
-                <label>Bank Account Number</label>
+                <label>Company Email</label>
                 <input
-                  name="bankAccount"
-                  value={formData.bankAccount}
+                  name="companyEmail"
+                  value={formData.companyEmail}
                   onChange={handleChange}
-                  placeholder="Enter Account Number"
-                />
-              </div>
-              <div className="form-group">
-                <label>IFSC Code</label>
-                <input
-                  name="ifscCode"
-                  value={formData.ifscCode}
-                  onChange={handleChange}
-                  placeholder="Enter IFSC Code"
+                  placeholder="abcdefg@raksoftech.com"
                 />
               </div>
             </>
           )}
 
           <div className="form-actions">
-            {step > 1 && (
+            {step > 1 ? (
               <button type="button" className="back-btn" onClick={handleBack}>
                 Back
               </button>
+            ) : (
+              <div className="spacer" /> // pushes "Next" to the right on Step 1
             )}
+
             {step < 4 ? (
               <button type="button" className="submit-btn" onClick={handleNext}>
                 Next
               </button>
             ) : (
-              <button type="submit" className="submit-btn">
-                    Create Employee
+              <button type="submit" className="create-emp-btn">
+                Create Employee
               </button>
             )}
           </div>
