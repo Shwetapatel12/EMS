@@ -6,6 +6,7 @@ import "./index.css";
 import AdminTimeSheet from "./pages/AdminTimeSheet";
 import EmployeeManagement from "./pages/EmployeeManagement";
 import AdminDashboard from "./pages/AdminDashboard";
+import EmployeeProfile from "./pages/EmployeeProfile";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/admin-timesheet" element={<AdminTimeSheet />} />
         <Route path="/emp-managment" element={<EmployeeManagement />} />
+        <Route path="/employee/:id" element={<EmployeeProfile />} />
+        
         <Route path="/timesheet" element={<TimeSheet />} /> 
         <Route path="/profile" element={<Profile />} /> {/* Ensure Profile is imported */}
       </Routes>
