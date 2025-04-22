@@ -1,34 +1,39 @@
+/* Modal Overlay */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  z-index: 1000;
 }
 
+/* Modal Box */
 .modal-content {
   background-color: white;
-  padding: 20px;
+  padding: 2vh;
   border-radius: 8px;
-  width: 100%;
+  width: 80%;
+  height: 85%;
   max-width: 400px;
+  max-height: 100%;
+  overflow-y: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  height: auto;        
-  overflow: visible;   
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
 }
 
+/* Modal Header */
 .modal-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 18px;
-  color: rgba(0, 0, 0, 1);
-  margin-top: 0px;
+  font-size: 16px;
+  color: #000;
+  margin-left: 4px;
 }
 
 .modal-header h2 {
@@ -37,6 +42,7 @@
   font-weight: bold;
 }
 
+/* Close Button */
 .close-btn {
   background: none;
   border: none;
@@ -44,16 +50,25 @@
   color: #333;
 }
 
+
+/* Step Indicator */
 .step-indicator {
-  margin-top: 2px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 28px;
-  font-size: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+  max-width: 500px;
+  padding: 0;
+}
+
+.step-item {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  font-size: 8px;
 }
 
 .step-circle {
-
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -63,6 +78,8 @@
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  margin: 0 auto;
+  z-index: 1;
   transition: background-color 0.3s ease;
 }
 
@@ -70,54 +87,137 @@
   background-color: rgba(0, 175, 239, 1);
   color: white;
 }
-.modal-form {
-  display: flex;
-  flex-wrap: wrap; /* Allows wrapping if content exceeds width */
-  gap: 1rem;
+
+.step-circle.completed {
+  background-color: #28a745;
+  color: white;
+
+}
+.step-item.active .step-label {
+  color: rgba(0, 175, 239, 1); /* Blue for active */
+  font-weight: bold;
+}
+
+.step-item.completed .step-label {
+  font-weight: bold;
+}
+
+.step-label {
+  margin-top: 8px;
+  font-size: 9px;
+  color: rgba(96, 96, 96, 1);
 }
 
 
-.form-group input {
-  border: 1px solid rgba(0, 175, 239, 1);
-  border-radius: 6px;
-  font-size: 1px;
-  outline: none;
+.step-line {
+  position: absolute;
+  top: 9px;
+  left: 60%;
+  right: -50%;
+  border-top: 2px dotted #ccc;
+  height: 0;
+  z-index: 0;
+}
+
+/* Modal Form Layout */
+.modal-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center; 
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.form-group {
+  margin-top: 3px;
+  width: 60%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  padding: 0 5rem;
+}
+.form-group input::placeholder {
+  color: rgba(48, 48, 48, 1);
+  opacity: 1; /* Ensures full visibility in some browsers */
 }
 
 .form-group label {
-  font-weight: 500;
   margin-bottom: 5px;
-  color: #444;
+  font-size: 10px;
+  color: rgba(144, 144, 144, 1);
 }
 
 .form-group input {
-  padding: 10px;
-  border: 1px solid #ccc;
+  padding: 5px;
+  border: 1px solid rgba(225, 225, 225, 1);
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 12px;
   outline: none;
 }
 
+.form-group input:focus {
+  border-color: rgba(0, 175, 239, 1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end; /* align buttons to right */
+  gap: 6rem; /* reduce gap */
+  align-items: center;
+  margin-top: 2rem;
+  width: 62%;
+  padding: 0rem 4rem;
+}
+.create-emp-btn {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(0, 175, 239, 1);
+  color: white;
+  box-shadow: 0px 4px 6px rgba(0, 175, 239, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap; 
+}
+
+.line {
+  background-color: rgba(214, 214, 214, 1);
+  margin: 0.9rem 0;
+
+}
+
+/* Buttons */
+.back-btn,
+.submit-btn
+{
+  padding: 0.4rem 1.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  min-width: 20px;
+}
+.spacer {
+  width: 120px; /* same width as the button to align properly */
+}
 .back-btn {
-  background-color: #ccc;
-  color: #333;
+  background-color: #f0f0f0;
+  background: none;
+  color: rgba(48, 48, 48, 1);
 }
 
 .submit-btn {
-  background-color: #4caf50;
+  background-color: rgba(0, 175, 239, 1);
   color: white;
 }
 
 .submit-btn:hover {
-  background-color: #43a047;
+  background-color: rgba(0, 175, 239, 0.8);
 }
 
-.back-btn,
-.submit-btn {
-  padding: 0.6rem 1.4rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
+.create-emp-btn {
+  background-color: rgba(0, 175, 239, 1);
+  color: white;
 }

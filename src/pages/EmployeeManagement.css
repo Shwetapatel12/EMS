@@ -1,14 +1,4 @@
 
-
-  
-
-  
-  .employee-name-cell {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
   .employee-avatar-table img,
   .placeholder-avatar {
     width: 35px;
@@ -25,12 +15,16 @@
   
   .action-icons {
     display: flex;
-    gap: 12px;
+    gap: 18px;
     cursor: pointer;
-    color: #333;
+    color: #00afef;
   }
   
   .action-icons .iconify:hover {
     color: #00afef;
   }
   
+  .eye, .pen {
+    font-size: 14px;
+    color: #00afef;
+  }
