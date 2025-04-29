@@ -74,7 +74,7 @@ const Header = ({ onNewEntry }) => {
           <div className="time-info">
             <p className="puch-in-time">
               {" "}
-              <Icon icon="formkit:time" width="18" height="18" color="white" />
+              <Icon icon="formkit:time" width="12" height="12" color="white" />
               Punch In Time: {new Date(punchInTime).toLocaleTimeString()}
             </p>
 
@@ -82,8 +82,8 @@ const Header = ({ onNewEntry }) => {
               {" "}
               <Icon
                 icon="fluent:location-28-regular"
-                width="18"
-                height="18"
+                width="12"
+                height="12"
                 color="white"
               />
               Shivrajnagar, pune
@@ -93,8 +93,8 @@ const Header = ({ onNewEntry }) => {
               {" "}
               <Icon
                 icon="material-symbols-light:add"
-                width="18"
-                height="18"
+                width="12"
+                height="12"
                 color="white"
               />
               Task
