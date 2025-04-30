@@ -59,4 +59,12 @@
   .main-content {
       margin-left: 200px; /* Match sidebar width */
   }
+  .background-main-content {
+    margin-left: 10px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .Sidebar {
+    display: none; /* Adjusted width for smaller screens */
+  }
 }

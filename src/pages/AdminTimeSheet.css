@@ -38,7 +38,7 @@
   padding: 6px;
   border-radius: 10px;
   border: 1px solid rgba(216, 216, 216, 1);
-  margin-left: 199px;
+  margin-left: 200px;
 
 }
 
@@ -202,3 +202,80 @@ a {
 
 .dates {
 font-size: 12px;}
+
+
+/* Small devices (phones, up to 600px) */
+@media (max-width: 600px) {
+  .timesheet-container {
+    padding: 16px;
+    margin: 20px 10px;
+  }
+
+  .header-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .timesheet-controls {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .toggle-buttons {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  .toggle-buttons button {
+    width: auto;
+    padding: 6px 12px;
+  }
+
+  .search-bar {
+    width: 100%;
+  }
+
+  .download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .timesheet-table {
+    overflow-x: auto;
+  }
+
+  .timesheet-table table {
+    min-width: 600px; /* Prevent table squeeze */
+  }
+
+  .date-picker {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .date-boxes {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+/* Medium devices (tablets, 601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .timesheet-container {
+    padding: 18px;
+    margin: 25px 16px;
+  }
+
+  .timesheet-controls {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+
+  .date-picker {
+    flex-wrap: wrap;
+  }
+}

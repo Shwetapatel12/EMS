@@ -144,6 +144,16 @@ const Profile = () => {
             {renderField("Manager Name", "manager")}
             {renderField("HR Name", "hr")}
           </div>
+          {editMode && (
+            <div className="mobile-buttons">
+              <button className="save-btn" onClick={handleSave}>
+                Save
+              </button>
+              <button className="cancel-btn" onClick={handleCancel}>
+                Cancel
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

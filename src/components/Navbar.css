@@ -1,63 +1,69 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
-    border-radius: 8px;
-    position: fixed;
-    width: 98%;
-    top:0;
-    left: 0;
-    right: 5px;
-    z-index: 1000;
-  }
-  
-  .navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .navbar-logo {
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-  .navbar-title {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333333;
-  }
-  
-  .navbar-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-user-name {
-    margin-right: 10px;
-    font-size: 16px;
-    color: #333333;
-  }
-  
-  .navbar-user-img {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: 50px;
-    right: 0;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    width: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: fixed;
+  width: 98%;
+  top: 0;
+  left: 0;
+  right: 5px;
+  z-index: 1000;
 }
+.menu-icon {
+  background: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+}
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333333;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-user-name {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #333333;
+}
+
+.navbar-user-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 50px;
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  width: 140px;
+}
+
 .profile-dropdown.open .dropdown-menu {
   display: block;
 }
@@ -95,7 +101,7 @@
   align-items: center;
   position: relative;
   cursor: pointer;
-  gap: 8px; /* Optional: Adds spacing between items */
+  gap: 8px;
 }
 
 .navbar-user-img {
@@ -114,5 +120,147 @@
   font-size: 20px;
   color: #555;
 }
+.menu-icon {
+  background: none;
+  border: none;
+  display: none;
+  cursor: pointer;
+  margin-right: 10px;
+  color: rgba(0, 175, 239, 1);
+}
 
+.mobile-sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 220px;
+  height: 100%;
+  background-color: #ffffff;
+  box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+  transition: left 0.3s ease;
+  padding-top: 70px;
+  z-index: 100;
+}
 
+.mobile-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.mobile-sidebar li {
+  padding: 15px;
+}
+
+.mobile-sidebar li a {
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.mobile-sidebar.open {
+  left: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 50;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+}
+/* Responsive Styling */
+@media (min-width: 768px) {
+  .navbar-title {
+    font-size: 16px;
+  }
+  .mobile-sidebar {
+    display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+  .navbar-user-name {
+    font-size: 14px;
+  }
+
+  .navbar-user-img {
+    height: 32px;
+    width: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 8px 15px;
+  }
+  
+  .navbar-title {
+    font-size: 14px;
+  }
+
+  .navbar-left {
+    gap: 8px;
+  }
+
+  .navbar-logo {
+    height: 30px;
+  }
+
+  .navbar-user-name {
+    font-size: 12px;
+  }
+
+  .navbar-user-img {
+    height: 28px;
+    width: 28px;
+  }
+
+  .profile-dropdown {
+    gap: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 5px 10px;
+  }
+
+  .navbar-left {
+    gap: 5px;
+  }
+
+  .navbar-logo {
+    height: 25px;
+  }
+
+  .navbar-title {
+    font-size: 12px;
+  }
+
+  .navbar-user-name {
+    font-size: 10px;
+  }
+
+  .navbar-user-img {
+    height: 24px;
+    width: 24px;
+  }
+
+  .navbar-dropdown-icon {
+    font-size: 18px;
+  }
+
+  .profile-dropdown {
+    gap: 4px;
+  }
+}
