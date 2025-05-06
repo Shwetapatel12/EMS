@@ -85,6 +85,7 @@ const Navbar = () => {
           <li><NavLink to="/admin-timesheet">Admin Timesheet</NavLink></li>
           <li><NavLink to="/emp-managment">Employee Management</NavLink></li>
           <li><NavLink to="/timesheet">Timesheet</NavLink></li>
+          <li><NavLink to="/leave-managment">LeaveManagement</NavLink></li>
         </ul>
       </div>
       {/* overlay to close sidebar when clicking outside */}

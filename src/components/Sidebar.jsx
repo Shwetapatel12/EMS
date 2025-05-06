@@ -51,6 +51,24 @@ const Sidebar = () => {
             Timesheet
           </NavLink>
         </li>
+        <li>
+          <NavLink
+            to="/leave-managment"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            <LayoutDashboard />
+            Leave Managment
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/admin-leave-managment"
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+          >
+            <LayoutDashboard />
+            Admin Leave Managment
+          </NavLink>
+        </li>
       </ul>
     </div>
   );
