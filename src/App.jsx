@@ -9,6 +9,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import EmployeeProfile from "./pages/EmployeeProfile";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LeaveManagement from "./pages/LeaveManagement";
+import ApplyLeave from "./pages/ApplyLeave";
+import AdminLeaveManagement from "./pages/AdminLeaveManagement";
 
 
 function App() {
@@ -25,6 +28,10 @@ function App() {
         
         <Route path="/timesheet" element={<TimeSheet />} /> 
         <Route path="/profile" element={<Profile />} /> {/* Ensure Profile is imported */}
+        <Route path="/leave-managment" element={<LeaveManagement />} /> 
+        <Route path="/apply-leave" element={<ApplyLeave />} />
+        <Route path="/admin-leave-managment" element={<AdminLeaveManagement />} />
+
       </Routes>
       <ToastContainer position="top-right" autoClose={3000} />
       </>

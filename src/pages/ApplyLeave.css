@@ -1,0 +1,86 @@
+.apply-container {
+    padding: 15px 10px 0px 0px;
+    border-radius: 10px;
+    max-width: 370px;
+    margin: 2px ;
+  }
+  
+  .apply-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .apply-subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+  }
+  
+  .leave-form {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .leave-form label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: rgba(80, 80, 80, 1);
+    font-size: 12px;
+  }
+  
+  .leave-form select,
+  .leave-form input,
+  .leave-form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  .date-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .date-input {
+    display: flex;
+    gap: 10px;
+  }
+  .date-input > div {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+  }
+  .date-section div {
+    flex: 1;
+  }
+  
+  textarea {
+    min-height: 80px;
+    resize: vertical;
+  }
+  .button-wrapper {
+    border: 1.5px solid rgba(0, 175, 239, 1);
+    padding: 0px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 28px;
+    margin-top: 28px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .send-button {
+    color: rgba(0, 175, 239, 1);
+    font-weight: 500;
+
+  }
+  
+  .back-icon {
+    margin-bottom: 0px;
+  }
+  
